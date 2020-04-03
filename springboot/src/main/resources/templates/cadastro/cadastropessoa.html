@@ -4,7 +4,7 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sistema - Cadastro de Pessoas</title>
 
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -104,12 +104,21 @@ table th {
 					<input name="idade" th:field="*{idade}" id="idade" class="validate">
 				</div>
 				
-				<div class="input-fiel col s6">
+				<!--  <div class="input-fiel col s6">
 					<label for="profissao" class="active">Profissão</label> 
 					<select class="browser-default" th:field="*{profissao}" id="profissao">
 						<option th:each="p : ${profissoes}" th:value="${p.id}" th:text="${p.nome}">
 					</select>
+				</div>-->
+				
+				<div class="input-fiel col s6">	
+					<label for="profissao" class="active">Profissão</label> 
+						<select class="browser-default" th:field="*{profissao}" id="profissao">
+							<option th:each="p : ${T(curso.springboot.model.Profissao).values()}" 
+									th:value="${p}" th:text="${p.nome}">
+						</select>
 				</div>
+				
 			</div>
 
 			<div class="row">

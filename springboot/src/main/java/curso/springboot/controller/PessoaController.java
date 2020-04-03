@@ -16,7 +16,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import curso.springboot.model.Pessoa;
 import curso.springboot.repository.PessoaRepository;
-import curso.springboot.repository.ProfissaoRepository;
+//import curso.springboot.repository.ProfissaoRepository;
 import curso.springboot.repository.TelefoneRepository;
 
 @Controller
@@ -45,16 +44,18 @@ public class PessoaController {
 	@Autowired
 	private ReportUtil reportUtil;
 	
-	@Autowired
-	private ProfissaoRepository profissaoRepository;
+	//@Autowired
+	//private ProfissaoRepository profissaoRepository;
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/cadastropessoa")
+	
+	
+	@RequestMapping(method = RequestMethod.GET, value = "**/cadastropessoa")
 	public ModelAndView inicio() {
 		
 		ModelAndView modelAndView = new ModelAndView("cadastro/cadastropessoa");
 		modelAndView.addObject("pessoaobj", new Pessoa());
 		modelAndView.addObject("pessoas", pessoaRepository.findAll(PageRequest.of(0, 5, Sort.by("nome")))); //pagerequest serve para diminuir a quantidade de itens apresentados na página
-		modelAndView.addObject("profissoes", profissaoRepository.findAll());
+		//modelAndView.addObject("profissoes", profissaoRepository.findAll());
 		
 		return modelAndView;
 	}
@@ -95,7 +96,7 @@ public class PessoaController {
 			ModelAndView modelAndView = new ModelAndView("cadastro/cadastropessoa");
 			modelAndView.addObject("pessoas", pessoaRepository.findAll(PageRequest.of(0, 5, Sort.by("nome"))));//procurar na paginação
 			modelAndView.addObject("pessoaobj", pessoa);
-			modelAndView.addObject("profissoes", profissaoRepository.findAll());
+			//modelAndView.addObject("profissoes", profissaoRepository.findAll());
 			
 			//lista de erros
 			List<String> msg = new ArrayList<String>();
@@ -129,7 +130,7 @@ public class PessoaController {
 		andView.addObject("pessoas", pessoaRepository.findAll(PageRequest.of(0, 5, Sort.by("nome"))));//procurar na paginação
 		
 		andView.addObject("pessoaobj", new Pessoa());
-		andView.addObject("profissoes", profissaoRepository.findAll());
+		//andView.addObject("profissoes", profissaoRepository.findAll());
 		
 		return andView;
 
@@ -141,7 +142,7 @@ public class PessoaController {
 		andView.addObject("pessoas", pessoaRepository.findAll(PageRequest.of(0, 5, Sort.by("nome"))));
 		
 		andView.addObject("pessoaobj", new Pessoa());
-		andView.addObject("profissoes", profissaoRepository.findAll());
+		//andView.addObject("profissoes", profissaoRepository.findAll());
 		
 		return andView;
 	}
@@ -156,7 +157,7 @@ public class PessoaController {
 		ModelAndView modelAndView = new ModelAndView("cadastro/cadastropessoa");
 		modelAndView.addObject("pessoas", pessoaRepository.findPessoaByNamePage(nomepesquisa, pageable));
 		modelAndView.addObject("pessoaobj", pessoa.get());
-		modelAndView.addObject("profissoes", profissaoRepository.findAll());
+		//modelAndView.addObject("profissoes", profissaoRepository.findAll());
 		
 		
 		return modelAndView;
@@ -171,7 +172,7 @@ public class PessoaController {
 		modelAndView.addObject("pessoas", pessoaRepository.findAll(PageRequest.of(0, 5, Sort.by("nome"))));
 		
 		modelAndView.addObject("pessoaobj", new Pessoa());
-		modelAndView.addObject("profissoes", profissaoRepository.findAll());
+		//modelAndView.addObject("profissoes", profissaoRepository.findAll());
 		
 		return modelAndView;
 	}

@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -52,7 +51,10 @@ public class Pessoa implements Serializable{
 	
 	private String sexopessoa;
 	
-	@ManyToOne
+	//@ManyToOne
+	//private Profissao profissao;
+	
+	@Enumerated(EnumType.STRING)
 	private Profissao profissao;
 	
 	@Enumerated(EnumType.STRING)
@@ -104,6 +106,16 @@ public class Pessoa implements Serializable{
 		this.dataNascimento = dataNascimento;
 	}
 
+	
+	
+	public Profissao getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(Profissao profissao) {
+		this.profissao = profissao;
+	}
+
 	public Cargo getCargo() {
 		return cargo;
 	}
@@ -112,13 +124,13 @@ public class Pessoa implements Serializable{
 		this.cargo = cargo;
 	}
 
-	public Profissao getProfissao() {
+	/*public Profissao getProfissao() {
 		return profissao;
 	}
 
 	public void setProfissao(Profissao profissao) {
 		this.profissao = profissao;
-	}
+	}*/
 
 	public String getSexopessoa() {
 		return sexopessoa;

@@ -1,24 +1,21 @@
 package curso.springboot.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
-public class Profissao {
+public enum Profissao {
 
-	@Id
-	private Long id;
+	ADVOGADO("Advogado"),
+	ENGENHEIRO("Engenheiro"),
+	MEDICO("Médico"),
+	PROFESSOR("Professor"),
+	PROGRAMADOR("Programador"),
+	OUTRO("Outro");
 	
 	private String nome;
 
-	public Long getId() {
-		return id;
+	private Profissao(String nome) {
+		this.nome = nome;
 	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -27,9 +24,8 @@ public class Profissao {
 		this.nome = nome;
 	}
 
-	
-
-
-	
-	
+	@Override
+	public String toString() {
+		return this.name();
+	}
 }

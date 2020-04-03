@@ -19,13 +19,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class SpringbootApplication implements WebMvcConfigurer{
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootApplication.class, args);
+		//SpringApplication.run(SpringbootApplication.class, args);
 		
 		//para criptografar a senha
-		/*
-		 * BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); String result =
-		 * encoder.encode("123"); System.out.println(result);
-		 */
+		  BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); 
+		  String result = encoder.encode("123"); 
+		  System.out.println(result);
+		 
+		 
 	}
 	
 	@Override
